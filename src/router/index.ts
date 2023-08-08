@@ -34,9 +34,9 @@ const router = createRouter({
 
 
 router.beforeEach((to, from,next) =>{
-  if(to.path === '/'){
+  if(to.path === '/index'){
     // const token = localStorage.userList.token
-    const UserStores = useUserStores()
+    const UserStores:any = useUserStores()
     const token = UserStores.userList.token
     if(token){
       next()
