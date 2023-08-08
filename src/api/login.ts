@@ -1,12 +1,11 @@
 import login from '@/utils/http'
 
-export const loginAPI = ({account , password}:{account:string,password:string})=> {
+export const loginAPI = (parms:{})=> {
   return login({
-    url:'/login',
+    url:'/api/login',
     method:'POST',
     data: {
-      account,
-      password
+      parms
     }
   })
 }

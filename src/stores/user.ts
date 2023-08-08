@@ -7,9 +7,9 @@ export const useUserStores = defineStore('user',()=>{
   const router = useRouter()
   
   const userList = ref({})
-  const getUserInfo = async ({account,password}:{account:string,password:string})=>{
-    userList.value = await loginAPI({account,password})
-    console.log(userList.value.token)
+  const getUserInfo = async (parms:{})=>{
+    userList.value = await loginAPI(parms)
+    console.log(parms)
     router.push('/')
   }
 

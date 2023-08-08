@@ -7,13 +7,13 @@ const router =  useRouter()
 
 const userStores = useUserStores()
 const form = ref({
-  account:'liutian',
-  password:'123456',
+  username:'',
+  password:'',
 })
 
 //准备规则对象
 const rules = {
-  account:[
+  username:[
     {required:true,message:'用户名不可用',trigger:'blur'},
     {min:6,max:14,message:'用户名最小长度为6,最长为14',trigger:'blur'}
   ],
@@ -29,13 +29,8 @@ const Login = ()=>{
   formRef.value.validate((valid:boolean)=>{
     console.log(valid)
     if(valid){
-      // console.log(username)
-      // console.log(password)
-      console.log(form.value.account)
-      console.log(form.value.password)
-      userStores.getUserInfo({account:form.value.account,password:form.value.password})
-      
-      //跳转到login
+      // console.log(form.value)
+      userStores.getUserInfo(form.value)
       router.push('/')
     }
   })
@@ -52,8 +47,8 @@ const Login = ()=>{
       hide-required-asterisk
       ref="formRef"
       >
-        <el-form-item label="账号" prop="account">
-          <el-input v-model="form.account"></el-input>
+        <el-form-item label="账号" prop="username">
+          <el-input v-model="form.username"></el-input>
         </el-form-item>
         <el-form-item label="密码"  prop="password">
           <el-input v-model="form.password"></el-input>
