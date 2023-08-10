@@ -44,3 +44,11 @@ ul {
 .flex{
   display: flex;
 }
+
+.page-content{
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+}

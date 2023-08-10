@@ -1,13 +1,25 @@
-<script setup>
-import {ref} from 'vue'
-    const keyWord = ref('')
-    const searchList = ()=>{
+<script setup lang="ts">
+import {onMounted, ref} from 'vue'
+import {userList} from '@/api/user'
+const keyWord = ref('')
+const tableList:any = ref({})
 
-    }
-    const addList = ()=>{
-      
-    }
+const searchList = ()=>{
 
+}
+const addList = ()=>{
+  
+}
+
+const useUserList = async ()=>{
+  const res = await userList()
+  tableList.value = res
+}
+
+
+onMounted(() => {
+  useUserList()
+})
 </script>
 
 <template>
@@ -34,7 +46,13 @@ import {ref} from 'vue'
         <el-button type="primary" @click="addList">新建用户</el-button>
       </div>
     </div>
-    userlist
+    <!-- table -->
+    <el-table :data="tableList.users" style="width: 100%">
+    <el-table-column prop="username" label="姓名" width="180" />
+    <el-table-column prop="email" label="邮箱"  />
+    <el-table-column prop="mobile" label="电话" />
+    <el-table-column prop="role_name" label="角色" />
+  </el-table>
   </div>
 </template>
 
