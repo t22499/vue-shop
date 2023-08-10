@@ -22,11 +22,19 @@ httpInstance.interceptors.request.use(config => {
 httpInstance.interceptors.response.use(res => {
   loadingObj.close()
   const data = res.data
-  ElMessage({
-    message:data.message ,
-    type: 'error',
-    duration:2000
-  })
+  if(!data.state){
+    ElMessage({
+      message:data.message ,
+      type: 'error',
+      duration:2000
+    })
+  }else if(data.state){
+    ElMessage({
+      message:data.message ,
+      type: 'success',
+      duration:2000
+    })
+  }
   return data
 }, e => {
   loadingObj.close()
