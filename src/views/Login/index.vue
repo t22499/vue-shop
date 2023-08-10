@@ -24,12 +24,9 @@ const rules = {
 }
 
 const formRef = ref()
-// const {username,password} = form.value
 const Login = ()=>{
   formRef.value.validate((valid:boolean)=>{
-    console.log(valid)
     if(valid){
-      // console.log(form.value)
       userStores.getUserInfo(form.value)
       router.push('/')
     }

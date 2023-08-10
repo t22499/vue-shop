@@ -9,7 +9,15 @@ export const useUserStores = defineStore('user',()=>{
   const userList = ref({})
   const getUserInfo = async (parms:{})=>{
     userList.value = await loginAPI(parms)
-    console.log(parms)
+    // try{
+    //   userList.value = await loginAPI(parms)
+    // }catch(e){
+    //   const meta = {
+    //     status:401,
+    //     message:'登录失败,账号密码有误',
+    //   }
+    //     console.error(meta);
+    // }
     router.push('/')
   }
 
