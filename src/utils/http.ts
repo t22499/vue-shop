@@ -21,7 +21,13 @@ httpInstance.interceptors.request.use(config => {
 // axios响应式拦截器
 httpInstance.interceptors.response.use(res => {
   loadingObj.close()
-  return res.data
+  const data = res.data
+  ElMessage({
+    message:data.message ,
+    type: 'error',
+    duration:2000
+  })
+  return data
 }, e => {
   loadingObj.close()
     ElMessage({
